@@ -97,25 +97,26 @@ function GalleryCard(props) {
       // document.querySelectorAll("Gallery_card").style.minHeight = "auto"
     }
   }, [fullscreenclass]);
-  
+
 
 
   return (
 
     <div>
-      <div className={`Gallery_card ${fullscreenclass ? 'full-screen' : ''}`}
+      <div  className={`Gallery_card ${fullscreenclass ? 'full-screen' : ''}`}
       >
         <img id={fullscreenclass ? "fullscreen_custom" : ""} src={""} key={props.id} data-src={props.imgsrc} alt="img"
           className={`${loaded ? "loaded" : "loading"}  card-img-top`}
           onLoad={() => setIsLoaded(true)}
+          onClick={() => (fullscreenclass ? handleNormalImage() : undefined)}
           style={{
             width: fullscreenclass && tabletPc ? '95vw' : fullscreenclass ? '80vw' : '',
             height: fullscreenclass && tabletPc ? '100vh' : fullscreenclass ? '80vh' : '',
             top: fullscreenclass ? '50%' : '',
             left: fullscreenclass ? '50%' : '',
             transform: fullscreenclass ? 'translate(-50%, -50%)' : '',
-            pointerEvents: fullscreenclass ? "none" : ""
-
+            // pointerEvents: fullscreenclass ? "none" : "",
+            cursor: fullscreenclass ? "pointer":"default"
           }}
         />
 
