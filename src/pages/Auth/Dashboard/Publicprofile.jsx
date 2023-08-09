@@ -221,10 +221,11 @@ const Publicprofile = () => {
                                     <h2>{blog.writernmae}</h2>
                                 </div>
 
-                                <div className="whoholdsthetag">
+                                <div className="whoholdsthetag"  >
                                     {blog.tag.trim().split(' ').map((word, index) => (
                                         word.length > 0 && (
                                             <button
+                                            style={{cursor:"default"}}
                                                 key={index}
                                                 className={index !== 0 ? 'buttonmarginlft' : ''}
                                             >

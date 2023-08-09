@@ -137,6 +137,7 @@
     margin-bottom: 0;
     font-size: 1.4vw;
     margin-bottom:.35vw;
+    display: inline-block;
 }
 
 .whoholdsthetag{
