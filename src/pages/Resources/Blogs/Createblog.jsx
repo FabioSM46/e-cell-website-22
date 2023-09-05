@@ -1,3 +1,5 @@
+//createblog
+
 import React, { useEffect, useState, useRef } from 'react'
 import './Createblog.css'
 import NavbarTeam from '../../../components/shared/Navbar/NavbarTeam'
@@ -58,8 +60,36 @@ const Createblog = () => {
                 });
         }
     }, [navigate]);
+
+    useEffect(() => {
+        try {
+            const token = localStorage.getItem('token');
+            const config = {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            };
+            const response = axios.get(import.meta.env.VITE_REACT_APP_DASHBOARD, config)
+                .then(response => {
+                    const { facebook, github, linkedin, instagram } = response.data;
+                    // console.log(`github: ${response.data.github}`)
+                    // console.log(`facebook: ${response.data.facebook}`)
+                    // console.log(`linkedin: ${response.data.linkedin}`)
+                    // console.log(`instagram: ${response.data.instagram}`)
+                    if (response.data.github !== undefined || response.data.linkedin !== undefined || response.data.facebook !== undefined || response.data.instagram !== undefined) {
+                        console.log("everything good")
+                    } else {
+                        alert("You must add atleast one social media link in your profile before creating the blog.")
+                        navigate("/editprofile")
+                    }
+                })
+        } catch (error) {
+            console.log(error)
+        }
+    })
+
     const iscreateblogempty = () => {
-        return title !== "" && intro !== "" && authorid!=="" && tag !== "" && writeremail !== "" && content !== "" && writernmae !== "" && writerintro !== "" && writerpic !== "" && topicpic !== "";
+        return title !== "" && intro !== "" && authorid !== "" && tag !== "" && writeremail !== "" && content !== "" && writernmae !== "" && writerintro !== "" && writerpic !== "" && topicpic !== "";
     };
     // console.log(`authorid:${authorid}`)
     /* button onclick function */

@@ -1,3 +1,4 @@
+//tagspecificblog.jsx
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import './Tagspecificpage.css'
@@ -57,9 +58,9 @@ const Tagspecificblog = () => {
             <div className='tagblogpagemain'>
                 <div id='paddinginpublishlist'>
                     <Helmet>
-                        <title>Blog(s) with the tag {tagname} | THE ECELL NITS BLOG</title>
+                        <title>{blogs.length > 1 ? "Blogs":"Blog"} with the tag {tagname} | THE ECELL NITS BLOG</title>
                     </Helmet>
-                    <h1 style={{ textAlign: "center" }} className='headingtagsspecific'>Blog(s) with the tag {tagname}</h1>
+                    <h1 style={{ textAlign: "center" }} className='headingtagsspecific'>{blogs.length > 1 ? "Blogs":"Blog"} with the tag {tagname}</h1>
                     <div id='blogs_under_profile_protected'>
                         {fetching && <p id='loadingkrrhebhaiblogs'>Loading Blogs...</p>}
                         {noblog && !fetching && <p id='loadingkrrhebhaiblogs'>No Blog found.</p>}
